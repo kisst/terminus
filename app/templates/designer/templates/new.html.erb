@@ -1,0 +1,34 @@
+<%= render "shared/title", text: "New Designer Template" %>
+
+<section class="bit-page">
+  <header class="bit-header">
+    <ul class="bit-breadcrumbs">
+      <li class="bit-breadcrumb">
+        <%= link_to "Designer", routes.path(:designer), class: :link %>
+      </li>
+
+      <li class="bit-breadcrumb">New</li>
+    </ul>
+  </header>
+
+  <div class="bit-body">
+    <%= form_for :screen_template,
+                 routes.path(:designer_templates),
+                 class: "bit-card bit-form" do |form| %>
+
+      <h1 class="label">New Template</h1>
+
+      <%= render "designer/templates/shared/fields",
+                 form:,
+                 models:,
+                 screen_template:,
+                 fields:,
+                 errors: %>
+
+      <div class="form-actions">
+        <%= form.submit "Save", class: "bit-button-accept" %>
+        <%= link_to "Cancel", routes.path(:designer), class: "bit-button-decline" %>
+      </div>
+    <% end %>
+  </div>
+</section>

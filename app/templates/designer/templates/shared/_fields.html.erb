@@ -1,0 +1,42 @@
+<%= scope(:form_field, key: :model_id, errors:).render do %>
+  <label class="key" for="screen_template_model_id">
+    Model
+    <%= render "shared/popovers/triggers/default", name: :model %>
+  </label>
+
+  <%= form.select :model_id,
+                  select_options_for(models),
+                  id: :screen_template_model_id,
+                  class: :value %>
+<% end %>
+
+<%= scope(:form_field, key: :label, errors:).render do %>
+  <label class="key" for="screen_template_label">Label</label>
+
+  <%= tag.input id: :screen_template_label,
+                name: "screen_template[label]",
+                value: field_for(:label, fields, screen_template),
+                class: :value,
+                autocomplete: :off %>
+<% end %>
+
+<%= scope(:form_field, key: :name, errors:).render do %>
+  <label class="key" for="screen_template_name">
+    Name
+    <%= render "shared/popovers/triggers/default", name: :name %>
+  </label>
+
+  <%= tag.input id: :screen_template_name,
+                name: "screen_template[name]",
+                value: field_for(:name, fields, screen_template),
+                class: :value,
+                autocomplete: :off %>
+<% end %>
+
+<%= form.text_area :screen_template_code,
+                   name: "screen_template[code]",
+                   value: field_for(:code, fields, screen_template),
+                   class: "bit-editor",
+                   autocomplete: :off,
+                   data: {language: :liquid} %>
+
